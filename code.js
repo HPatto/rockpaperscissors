@@ -8,7 +8,7 @@ function getComputerChoice() {
     */
 
     // Initialize an array to hold the responses.
-    options = ["Rock", "Paper", "Scissors"];
+    options = ["ROCK", "PAPER", "SCISSORS"];
 
     // Number of options to consider
     bottomLimit = 0;
@@ -18,8 +18,6 @@ function getComputerChoice() {
     randIndex = getRandomInt(bottomLimit, topLimit);
 
     return options[randIndex];
-
-
 }
 
 // User interaction
@@ -37,7 +35,38 @@ function getUserChoice() {
             break;
         }
     }
-    return userInput;
+    return sanitizedInput;
+}
+
+// Check for a tie. Used before computing the winner.
+function gameIsTied (userString, computerString) {
+    return userString === computerString;
+}
+
+// Win determinator
+function gameResult(userString, computerString) {
+    /*
+    Determine and return an array with the appropriate result string.
+    */
+
+    let userOptions = ["ROCK", "PAPER", "SCISSORS"];
+    let compOptions = ["PAPER", "SCISSORS", "ROCK"];
+
+    let userIndex = userOptions.indexOf(userString);
+    let computerIndex = compOptions.indexOf(computerString);
+
+    let winString = "You win! ";
+    let loseString = "You lose! ";
+
+    if (userIndex === computerIndex) {
+        // Computer wins.
+        loseString = loseString + computerString + " beats " + userString;
+        return [false, loseString];
+    } else {
+        // User wins.
+        winString = winString + userString + " beats " + computerString;
+        return [true, (winString)];
+    }
 }
 
 function getRandomInt(value1, value2) {
@@ -68,4 +97,52 @@ function getRandomInt(value1, value2) {
 
     let randomInt = bottom + randomExcess;
     return randomInt;
+}
+
+function playRound() {
+
+    let resultFound = false;
+    let final;
+
+    while (!resultFound) {
+        console.log("Getting info:");
+        let userTurn = getUserChoice();
+        let compTurn = getComputerChoice();
+
+        console.log(userTurn);
+        console.log(compTurn);
+
+        if (!gameIsTied(userTurn, compTurn)) {
+            final = gameResult(userTurn, compTurn);
+            resultFound = true;
+        }
+    }
+    return final;
+}
+
+function game() {
+    /*
+    Play a best-of-x game of RPS!
+    No functionality to terminate the game early if a win / loss is confirmed early.
+    */
+
+    let numRounds = 5; // Odd numbers required for this!
+    let userWins = 0;
+    let round;
+
+    for (let i = 0; i < numRounds; i++) {
+        round = playRound()
+        console.log(round[1]);
+        console.log("\n");
+
+        if (round[0]) {
+            userWins++;
+        }
+    }
+
+    if (userWins > numRounds / 2) {
+        console.log("You won!");
+    } else {
+        console.log("You lost!");
+    }
 }
