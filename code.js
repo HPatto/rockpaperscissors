@@ -1,6 +1,6 @@
 /* Source code file for a basic rock, paper, scissors implementation. */
 
-// Computer engine.
+// Computer engine
 function getComputerChoice() {
     /*
     Return one of the three possible RPS results as a string.
@@ -20,6 +20,24 @@ function getComputerChoice() {
     return options[randIndex];
 
 
+}
+
+// User interaction
+function getUserChoice() {
+    let options = ["ROCK", "PAPER", "SCISSORS"];
+
+    let userInput;
+    let sanitizedInput;
+    
+    while (true) {
+        userInput = prompt("Rock, Paper, or Scissors: ");
+        sanitizedInput = userInput.toUpperCase();
+
+        if (options.includes(sanitizedInput)) {
+            break;
+        }
+    }
+    return userInput;
 }
 
 function getRandomInt(value1, value2) {
