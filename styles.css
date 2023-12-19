@@ -1,0 +1,17 @@
+/* Basic CSS styling for the RPS webpage. */
+
+.options {
+    padding: 48px;
+    background-color: rgb(209, 207, 207);
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rock-option,
+.paper-option,
+.scissors-option {
+    font-size: 24px;
+    font-weight: 600;
+}
