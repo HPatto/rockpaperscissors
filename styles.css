@@ -9,9 +9,9 @@
     align-items: center;
 }
 
-.rock-option,
-.paper-option,
-.scissors-option {
+#rock,
+#paper,
+#scissors {
     font-size: 24px;
     font-weight: 600;
 }

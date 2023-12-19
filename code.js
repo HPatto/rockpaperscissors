@@ -99,14 +99,15 @@ function getRandomInt(value1, value2) {
     return randomInt;
 }
 
-function playRound() {
+function playRound(userChoice) {
 
     let resultFound = false;
     let final;
 
     while (!resultFound) {
         console.log("Getting info:");
-        let userTurn = getUserChoice();
+        // let userTurn = getUserChoice();
+        let userTurn = userChoice;
         let compTurn = getComputerChoice();
 
         console.log(userTurn);
@@ -119,6 +120,32 @@ function playRound() {
     }
     return final;
 }
+
+// Attach an event listener to each buttons.
+// Best practice seems to dictate a switch statement on the container div.
+
+// Get the relevant element.
+const containerDiv = document.querySelector(".options");
+
+// Add an event listener to that element.
+containerDiv.addEventListener('click', function (e) {
+    // Check the id of the element which triggered the event
+    let selectedButton = e.target.id;
+    let sanitizedInput = selectedButton.toUpperCase();
+
+    switch (sanitizedInput) {
+        case 'ROCK':
+            playRound("ROCK");
+
+        case 'PAPER':
+            playRound("PAPER");
+        
+        case 'SCISSORS':
+            playRound("SCISSORS");
+    }
+
+})
+
 
 // function game() {
 //     /*
