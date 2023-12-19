@@ -120,29 +120,29 @@ function playRound() {
     return final;
 }
 
-function game() {
-    /*
-    Play a best-of-x game of RPS!
-    No functionality to terminate the game early if a win / loss is confirmed early.
-    */
+// function game() {
+//     /*
+//     Play a best-of-x game of RPS!
+//     No functionality to terminate the game early if a win / loss is confirmed early.
+//     */
 
-    let numRounds = 5; // Odd numbers required for this!
-    let userWins = 0;
-    let round;
+//     let numRounds = 5; // Odd numbers required for this!
+//     let userWins = 0;
+//     let round;
 
-    for (let i = 0; i < numRounds; i++) {
-        round = playRound()
-        console.log(round[1]);
-        console.log("\n");
+//     for (let i = 0; i < numRounds; i++) {
+//         round = playRound()
+//         console.log(round[1]);
+//         console.log("\n");
 
-        if (round[0]) {
-            userWins++;
-        }
-    }
+//         if (round[0]) {
+//             userWins++;
+//         }
+//     }
 
-    if (userWins > numRounds / 2) {
-        console.log("You won!");
-    } else {
-        console.log("You lost!");
-    }
-}
+//     if (userWins > numRounds / 2) {
+//         console.log("You won!");
+//     } else {
+//         console.log("You lost!");
+//     }
+// }
