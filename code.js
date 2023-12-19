@@ -121,31 +121,39 @@ function playRound(userChoice) {
     return final;
 }
 
-// Attach an event listener to each buttons.
-// Best practice seems to dictate a switch statement on the container div.
-
-// Get the relevant element.
-const containerDiv = document.querySelector(".options");
-
-// Add an event listener to that element.
-containerDiv.addEventListener('click', function (e) {
-    // Check the id of the element which triggered the event
+// Switch statement on the container div.
+function handleClick(e) {
     let selectedButton = e.target.id;
     let sanitizedInput = selectedButton.toUpperCase();
 
     switch (sanitizedInput) {
         case 'ROCK':
+            console.log("Vibe");
             playRound("ROCK");
+            break;
 
         case 'PAPER':
             playRound("PAPER");
+            break;
         
         case 'SCISSORS':
             playRound("SCISSORS");
+            break;
+    }
+}
+
+// Check if DOM is loaded, then create the event listener.
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // Get the relevant element.
+    const containerDiv = document.querySelector(".options");
+
+    if (containerDiv) {
+        // Add an event listener to that element.
+        containerDiv.addEventListener('click', handleClick);
     }
 
 })
-
 
 // function game() {
 //     /*
